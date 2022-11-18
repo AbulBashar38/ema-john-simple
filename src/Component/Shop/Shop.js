@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Product from "../Product/Product";
+import Cart from "../Cart/Cart";
 import "./Shop.css";
+import { Link } from "react-router-dom";
+import Button from "react-bootstrap/Button";
 const Shop = () => {
   const [cart, setCart] = useState([]);
   const [products, setProducts] = useState([]);
@@ -24,13 +27,14 @@ const Shop = () => {
           const newCart = [...cart, ClickedProduct];
           setCart(newCart);
         }
+        return true;
       });
     } else {
       ClickedProduct["quantity"] = 1;
       setCart([ClickedProduct]);
     }
-    console.log(cart);
   };
+
   return (
     <div className="shop-container">
       <div className="product-container">
@@ -42,7 +46,15 @@ const Shop = () => {
           ></Product>
         ))}
       </div>
-      <div className="cart-container"></div>
+      <div className="cart-container">
+        {
+          <Cart cartData={cart}>
+            <Link to="/review">
+              <Button variant="success">Review your order</Button>
+            </Link>
+          </Cart>
+        }
+      </div>
     </div>
   );
 };
