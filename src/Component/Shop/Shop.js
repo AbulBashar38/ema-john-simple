@@ -1,17 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Product from "../Product/Product";
 import Cart from "../Cart/Cart";
+import useProducts from "../Hooks/useProducts";
 import "./Shop.css";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 const Shop = () => {
+  const [products, setProducts] = useProducts();
   const [cart, setCart] = useState([]);
-  const [products, setProducts] = useState([]);
-  useEffect(() => {
-    fetch("products.json")
-      .then((res) => res.json())
-      .then((data) => setProducts(data));
-  }, []);
+
   const handleAddToCart = (ClickedProduct) => {
     if (cart.length > 0) {
       cart.find((cartProduct) => {
