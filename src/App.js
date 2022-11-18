@@ -6,7 +6,7 @@ import Orders from "./Component/Orders/Orders";
 import OrderReview from "./Component/OrderReview/OrderReview";
 import Inventory from "./Component/Inventory/Inventory";
 import Login from "./Component/Login/Login";
-
+import "bootstrap/dist/css/bootstrap.min.css";
 function App() {
   return (
     <div>
